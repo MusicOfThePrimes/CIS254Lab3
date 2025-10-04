@@ -1,0 +1,22 @@
+# macOS system files
+.DS_Store
+
+# Java class files
+*.class
+
+# Build output directories (Maven/Gradle)
+target/
+bin/
+out/
+
+# Logs and temp files
+*.log
+*.tmp
+
+# IDE settings
+.idea/
+*.iml
+.vscode/
+
+# OS-specific
+Thumbs.db
