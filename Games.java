@@ -1,7 +1,7 @@
 /**
  * Games.java
  *
- * A simple Java program that allows the user to play two different games:
+ * This is a simple Java program that allows the user to play two different games:
  * 1. A Number Guessing Game
  * 2. A Rock-Paper-Scissors Game
  *
