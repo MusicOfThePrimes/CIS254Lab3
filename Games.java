@@ -114,7 +114,7 @@ public class Games {
         String playAgain = "Y";
 
         do {
-            System.out.print("Enter you choice: 1. rock, 2. paper, 3. scissors: ");
+            System.out.print("Enter you choice (1. rock, 2. paper, 3. scissors): ");
             int userChoice = input.nextInt();
             int computerChoice = rand.nextInt(3) + 1;
             input.nextLine(); // clear newline
