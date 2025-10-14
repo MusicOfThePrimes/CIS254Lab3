@@ -17,8 +17,8 @@
  *
  * <p>This class was developed collaboratively by:</p>
  * <ul>
- *     <li><b>Lab3 Partner1</b>: Implemented the Number Guessing Game.</li>
- *     <li><b>Lab3 Partner1</b>: Implemented the Rock-Paper-Scissors Game.</li>
+ *     <li><b>Huilin Reid</b>: Implemented the Number Guessing Game.</li>
+ *     <li><b>Charlie Kavich Kavich</b>: Implemented the Rock-Paper-Scissors Game.</li>
  * </ul>
  *
  * @author Charlie Kavich Kavich
