@@ -21,7 +21,7 @@
  *     <li><b>Huilin Reid</b>: Implemented the Rock-Paper-Scissors Game.</li>
  * </ul>
  *
- * @author Lab2 Partner
+ * @author Charlie Kavich Kavich
  * @author Huilin Reid
  * @version 1.0
  * @since 10-03-2025
