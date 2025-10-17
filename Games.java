@@ -109,35 +109,47 @@ public class Games {
      * @param input A Scanner object used to read user input from the console.
      */
 
-    public static void rockPaperScissorsGame(Scanner input) {
-        Random rand = new Random();
-        String playAgain = "Y";
+public static void rockPaperScissorsGame(Scanner input) {
+        Random random = new Random();
+        System.out.println("Welcome to ROCK PAPER SCISSORS, are you ready to play? (Y/N)");
+        String status = input.nextLine();
+        boolean inactive = false;
+         
+        while(status.toLowerCase().equals("y"))
+        {
+            int compChoice = 1 + random.nextInt(3);
+            int userChoice = 0;
 
-        do {
-            System.out.print("Enter you choice (1. rock, 2. paper, 3. scissors): ");
-            int userChoice = input.nextInt();
-            int computerChoice = rand.nextInt(3) + 1;
-            input.nextLine(); // clear newline
-
-            System.out.println("Computer chose: " + convertChoice(computerChoice));
-            System.out.println("You chose: " + convertChoice(userChoice));
-
-            if (userChoice == computerChoice) {
-                System.out.println("It is a tie!\n");
-            } else if (
-                (userChoice == 1 && computerChoice == 3) ||
-                (userChoice == 2 && computerChoice == 1) ||
-                (userChoice == 3 && computerChoice == 2)
-             ) {
-                System.out.println("You win!\n");
-            } else {
-                System.out.println("Computer wins!\n");
+            while(userChoice < 1 || userChoice > 3)
+            {
+                System.out.println("Type 1 for rock. \nType 2 for paper. \nType 3 for scissors. ");
+                userChoice = input.nextInt();
+                if(userChoice < 1 || userChoice > 3)
+                {
+                    System.out.println("The input you entered was invalid, please observe the options and try again.");
+                }
+                
             }
 
-            System.out.print("Do you want to play again? (Y/N): ");
-            playAgain = input.nextLine();
+            System.out.println("You chose " + convertChoice(userChoice) + "!\nThe computer chose " + convertChoice(compChoice) + "!");
 
-        } while (playAgain.equalsIgnoreCase("Y"));    
+            if(userChoice == compChoice)
+            {
+                System.out.println("It's a tie!");
+            }
+            else if((userChoice == 1 && compChoice == 3) || (userChoice == 2 && compChoice == 1) || (userChoice == 3 && compChoice == 2))
+            {
+                System.out.println("Congratulations, you win!");
+            }
+            else
+            {
+                System.out.println("You lose, better luck next time!");
+            }
+
+            System.out.println("\nWould you like to play again? (Y/N)");
+            status = input.next();
+
+            }
     }
 
     /**
