@@ -56,8 +56,10 @@ public class Games {
         String playAgain;
 
         System.out.println("\nWelcome to Number Guessing Game!");
+        System.out.print("Are you ready to play? (Y/N): ");
+        playAgain = input.nextLine().trim();
 
-        do {
+        while (playAgain.equalsIgnoreCase("Y")) {
             int numberToGuess = rand.nextInt(MAX - MIN + 1) + MIN;
             int triesLeft = MAX_TRIES;
             boolean guessedCorrectly = false;
@@ -66,7 +68,26 @@ public class Games {
             System.out.print("Guess what it is. You have " + triesLeft + " tries.\n");
 
             while(triesLeft > 0) {
-                int guess = input.nextInt();
+                int guess = 0;
+
+                // Input validation loop
+                boolean validInput = false;
+                do {
+                    System.out.print("Enter your guess: ");
+                    if (input.hasNextInt()) {
+                        guess = input.nextInt();
+                        input.nextLine(); // consume newline
+                        if (guess >= MIN && guess <= MAX) {
+                            validInput = true;
+                        } else {
+                            System.out.println("Invalid input. Please enter a number between " + MIN + " and " + MAX + ".");
+                        }
+                    } else {
+                        System.out.println("Invalid input. Please enter a valid number.");
+                        input.nextLine(); // discard invalid input
+                    }
+                } while (!validInput);
+
                 triesLeft--;
 
                 if(guess == numberToGuess) {
@@ -89,10 +110,9 @@ public class Games {
             }
 
             System.out.print("Do you want to play again? (Y/N): ");
-            playAgain = input.next();
-            input.nextLine(); // clear newline
-
-        } while (playAgain.equalsIgnoreCase("Y"));
+            playAgain = input.nextLine().trim();
+        } 
+        System.out.println("Thanks for playing!");
     }
 
     /**
@@ -164,7 +184,6 @@ public class Games {
 
             System.out.print("Do you want to play again? (Y/N): ");
             playAgain = input.nextLine().trim();
-
         } 
         System.out.println("Thanks for playing!");
     }
