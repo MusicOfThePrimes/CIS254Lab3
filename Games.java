@@ -32,7 +32,7 @@ import java.util.Scanner;
 
 public class Games {
     /**
-     * Game one: Guessing Game
+     * Game one: Number Guessing Game
      * 
      * This method runs an interactive number guessing game.
      * <p>
@@ -55,29 +55,31 @@ public class Games {
 
         String playAgain;
 
+        System.out.println("\nWelcome to Number Guessing Game!");
+
         do {
             int numberToGuess = rand.nextInt(MAX - MIN + 1) + MIN;
             int triesLeft = MAX_TRIES;
             boolean guessedCorrectly = false;
 
-            System.out.println("\nI'm thinking of a number between " + MIN + " and " + MAX + ".");
-            System.out.print("Guess what it is. You have " + triesLeft + " tries: ");
+            System.out.println("I'm thinking of a number between " + MIN + " and " + MAX + ".");
+            System.out.print("Guess what it is. You have " + triesLeft + " tries.\n");
 
             while(triesLeft > 0) {
                 int guess = input.nextInt();
                 triesLeft--;
 
                 if(guess == numberToGuess) {
-                    System.out.println("You got it!\n");
+                    System.out.println("You got it! Congratulations!\n");
                     guessedCorrectly = true;
                     break;
                 } else if (guess < numberToGuess) {
                     if (triesLeft > 0) {
-                        System.out.print("Nope! Too low. Try again (" + triesLeft + (triesLeft == 1 ? " try" : " tries") + " left): ");
+                        System.out.print("Nope! Too low. Try again (" + triesLeft + (triesLeft == 1 ? " try" : " tries") + " left).\n");
                     } 
                 } else {
                      if (triesLeft > 0) {
-                        System.out.print("Nope! Too high. Try again (" + triesLeft + (triesLeft == 1 ? " try" : " tries") + " left): ");
+                        System.out.print("Nope! Too high. Try again (" + triesLeft + (triesLeft == 1 ? " try" : " tries") + " left).\n");
                     }        
                 }
             }
@@ -111,23 +113,49 @@ public class Games {
 
     public static void rockPaperScissorsGame(Scanner input) {
         Random rand = new Random();
-        String playAgain = "Y";
+        String playAgain;
 
-        do {
-            System.out.print("Enter you choice (1. rock, 2. paper, 3. scissors): ");
-            int userChoice = input.nextInt();
+        System.out.println("\nWelcome to ROCK PAPER SCISSORS!");
+        System.out.print("Are you ready to play? (Y/N): ");
+        playAgain = input.nextLine().trim();
+
+        while (playAgain.equalsIgnoreCase("Y")) {
+            int userChoice;
+
+            // Input validation loop
+            do {
+                System.out.println("Choose your move:");
+                System.out.println("1. Rock");
+                System.out.println("2. Paper");
+                System.out.println("3. Scissors");
+                System.out.print("Enter your choice (1-3): ");
+
+                if (input.hasNextInt()) {
+                    userChoice = input.nextInt();
+                    input.nextLine(); // Consume leftover newline
+                    if (userChoice >= 1 && userChoice <= 3) {
+                        break; // Valid input
+                    } else {
+                        System.out.println("Invalid input. Please enter a number between 1 and 3.");
+                    }
+                } else {
+                    System.out.println("Invalid input. Please enter a valid number.");
+                    input.nextLine(); // Discard invalid input
+                    userChoice = 0; // Ensure the loop conitnues
+                }
+            } while (userChoice < 1 || userChoice > 3);
+
             int computerChoice = rand.nextInt(3) + 1;
-            input.nextLine(); // clear newline
 
-            System.out.println("Computer chose: " + convertChoice(computerChoice));
             System.out.println("You chose: " + convertChoice(userChoice));
+            System.out.println("Computer chose: " + convertChoice(computerChoice));
 
             if (userChoice == computerChoice) {
                 System.out.println("It is a tie!\n");
             } else if (
-                (userChoice == 1 && computerChoice == 3) ||
-                (userChoice == 2 && computerChoice == 1) ||
-                (userChoice == 3 && computerChoice == 2)
+                (userChoice == 1 && computerChoice == 3) || // Rock beats Scissors
+                (userChoice == 2 && computerChoice == 1) || // Paper bests Rock
+                (userChoice == 3 && computerChoice == 2) // Scissors beats Paper
              ) {
                 System.out.println("You win!\n");
             } else {
@@ -135,9 +163,10 @@ public class Games {
             }
 
             System.out.print("Do you want to play again? (Y/N): ");
-            playAgain = input.nextLine();
+            playAgain = input.nextLine().trim();
 
-        } while (playAgain.equalsIgnoreCase("Y"));    
+        } 
+        System.out.println("Thanks for playing!");
     }
 
     /**
