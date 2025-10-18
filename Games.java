@@ -47,7 +47,7 @@ public class Games {
      *
      * @param input A Scanner object used to read user input from the console.
      */
-    public static void guessingGame(Scanner input) {
+    public static void numberGuessingGame(Scanner input) {
         final int MIN = 1;
         final int MAX = 100;
         final int MAX_TRIES = 5;
@@ -247,7 +247,7 @@ public class Games {
 
             switch (choice) {
                 case 1:
-                    guessingGame(input);
+                    numberGuessingGame(input);
                     break;
                 case 2:
                     rockPaperScissorsGame(input);
